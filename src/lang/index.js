@@ -10,7 +10,8 @@ import pt from './locale/pt.json';
 
 Vue.use(VueI18n);
 
-const translations = { en, ja, fr, cs, de, ru, pt };
+// const translations = { en, ja, fr, cs, de, ru, pt };
+const translations = { fr, en };
 
 export const languages = [
     {
@@ -50,7 +51,7 @@ export function checkLanguage(language) {
 if (!localStorage.getItem('language')) {
     localStorage.setItem(
         'language',
-        languages.some(checkLanguage) ? navigator.language.split('-')[0] : 'en'
+        languages.some(checkLanguage) ? navigator.language.split('-')[0] : 'fr'
     );
 }
 
@@ -60,7 +61,7 @@ export default new VueI18n({
             ? localStorage.getItem('language')
             : languages.some(checkLanguage)
             ? navigator.language.split('-')[0]
-            : 'en',
-    fallbackLocale: 'en',
+            : 'fr',
+    fallbackLocale: 'fr',
     messages: translations,
 });
